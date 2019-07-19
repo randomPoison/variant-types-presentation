@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Handling Variant Types</title>
+
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Handling Variant Types</h1>
+                    <p>A Journey in Three Parts</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Prologue</h2>
+                    </section>
+
+                    <section>
+                        <p>Let's say we're making a game...</p>
+                        <p>With an in-game store...</p>
+                        <p>And you want to show the player what items they'll receive</p>
+                    </section>
+
+                    <section>
+                        <p>There are multiple possible items types:</p>
+                        <ul>
+                            <li>Cards</li>
+                            <li>Hard currency</li>
+                            <li>Energy refills</li>
+                            <li>And others...</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Each item type has different configuration data and is displayed differently in-game</p>
+                    </section>
+
+                    <section>
+                        <p>Card</p>
+                        <ul>
+                            <li>Name (string)</li>
+                            <li>Rarity (integer)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Energy Refill</p>
+                        <ul>
+                            <li>Energy type (enum)</li>
+                            <li>Amount (integer)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Hard Currency</p>
+                        <p>🎉 No extra data! 🎉</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>JSON</h2>
+                        <p>Part I</p>
+                    </section>
+
+                    <section>
+                        <p>Before we worry about how we'll represent these in our programming language of choice, let's look at how we'll represent their data</p>
+                        <p>... as JSON, of course</p>
+                    </section>
+
+                    <section>
+                        <p>Card</p>
+                        <pre><code data-trim data-noescape>
+                        {
+                            "name": "Cool Card",
+                            "rarity": 3
+                        }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Energy Refill</p>
+                        <pre><code data-trim data-noescape>
+                        {
+                            "energy": "Arena",
+                            "amount": 10
+                        }
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Hard Currency???</p>
+                        <pre><code data-trim data-noescape>
+                        {}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Listing Rewards</p>
+                        <pre><code data-trim data-noescape>
+                        [
+                            {
+                                "name": "Cool Card",
+                                "rarity": 3
+                            },
+                            {
+                                "energy": "Arena",
+                                "amount": 5
+                            },
+                            {}
+                        ]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Listing Rewards</p>
+                        <pre><code data-trim data-noescape>
+                        [
+                            {
+                                "quantity": 1,
+                                "data": {
+                                    "name": "Cool Card",
+                                    "rarity": 3
+                                }
+                            },
+                            {
+                                "quantity": 1,
+                                "data": {
+                                    "energy": "Arena",
+                                    "amount": 5
+                                }
+                            },
+                            {
+                                "quantity": 10,
+                                "data": {}
+                            }
+                        ]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Listing Rewards</p>
+                        <pre><code data-trim data-noescape>
+                        [
+                            {
+                                "quantity": 1,
+                                "data": {
+                                    "name": "Cool Card",
+                                    "rarity": 3
+                                }
+                            },
+                            {
+                                "quantity": 1,
+                                "data": {
+                                    "energy": "Arena",
+                                    "amount": 5
+                                }
+                            },
+                            {
+                                "quantity": 10
+                            }
+                        ]
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Rust</h2>
+                    <p>Part II</p>
+                </section>
+
+                <section>
+                    <h2>C#</h2>
+                    <p>Part III</p>
+                </section>
+            </div>
+        </div>
+
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                hash: true,
+
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
