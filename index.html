@@ -75,6 +75,14 @@
                         <p>Hard Currency</p>
                         <p>🎉 No extra data! 🎉</p>
                     </section>
+
+                    <section>
+                        <p>Additionally, all items specify some common fields:</p>
+                        <ul>
+                            <li>Quantity (integer)</li>
+                            <li>Icon (string)</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -120,50 +128,47 @@
                 </section>
 
                 <section>
-                    <h3>Listing Rewards</h3>
-
-                    <section data-transition="none">
-                        <p>The basic problem:</p>
-                        <pre><code class="stretch" data-trim data-noescape>
-                        [
-                            {
-                                "name": "Cool Card",
-                                "rarity": 3
-                            },
-                            {
-                                "energy": "Arena",
-                                "amount": 5
-                            },
-                            {}
-                        ]
-                        </code></pre>
+                    <section>
+                        <h3>Listing Rewards</h3>
                     </section>
 
-                    <section data-transition="none">
+                    <section>
+                        <p>Two basic approaches:</p>
+                        <ul>
+                            <li>"Inheritance"</li>
+                            <li>"Composition"</li>
+                        </ul>
+                    </section>
+
+                    <section>
                         <pre><code class="stretch" data-trim data-noescape>
                         [
                             {
                                 "quantity": 1,
+                                "icon": "card.png",
                                 "name": "Cool Card",
                                 "rarity": 3
                             },
                             {
                                 "quantity": 1,
+                                "icon": "arena_energy.png",
                                 "energy": "Arena",
                                 "amount": 5
                             },
                             {
-                                "quantity": 10
+                                "quantity": 10,
+                                "icon": "gem.png"
                             }
                         ]
                         </code></pre>
                     </section>
 
-                    <section data-transition="none">
+                    <section>
                         <pre><code class="stretch" data-trim data-noescape>
                         [
                             {
                                 "quantity": 1,
+                                "icon": "card.png",
                                 "data": {
                                     "name": "Cool Card",
                                     "rarity": 3
@@ -171,6 +176,7 @@
                             },
                             {
                                 "quantity": 1,
+                                "icon": "arena_energy.png",
                                 "data": {
                                     "energy": "Arena",
                                     "amount": 5
@@ -178,10 +184,25 @@
                             },
                             {
                                 "quantity": 10,
+                                "icon": "gem.png",
                                 "data": {}
                             }
                         ]
                         </code></pre>
+                    </section>
+
+                    <section>
+                        <p>In both cases, we have some data that is "invariant", and some data that is "variant"</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Tagging Types</h3>
+                    </section>
+
+                    <section>
+                        <p>In both approaches, we still need some way to specify how the variant data should be interpreted.</p>
                     </section>
                 </section>
 
