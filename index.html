@@ -78,10 +78,12 @@
                 </section>
 
                 <section>
-                    <section>
-                        <h2>JSON</h2>
-                        <p>Part I</p>
-                    </section>
+                    <h2>JSON</h2>
+                    <p>Part I</p>
+                </section>
+
+                <section>
+                    <h3>Basic JSON Representations</h3>
 
                     <section>
                         <p>Before we worry about how we'll represent these in our programming language of choice, let's look at how we'll represent their data</p>
@@ -109,15 +111,20 @@
                     </section>
 
                     <section>
-                        <p>Hard Currency???</p>
+                        <p>Hard Currency</p>
                         <pre><code data-trim data-noescape>
                         {}
                         </code></pre>
+                        <p>???</p>
                     </section>
+                </section>
 
-                    <section>
-                        <p>Listing Rewards</p>
-                        <pre><code data-trim data-noescape>
+                <section>
+                    <h3>Listing Rewards</h3>
+
+                    <section data-transition="none">
+                        <p>The basic problem:</p>
+                        <pre><code class="stretch" data-trim data-noescape>
                         [
                             {
                                 "name": "Cool Card",
@@ -132,9 +139,28 @@
                         </code></pre>
                     </section>
 
-                    <section>
-                        <p>Listing Rewards</p>
-                        <pre><code data-trim data-noescape>
+                    <section data-transition="none">
+                        <pre><code class="stretch" data-trim data-noescape>
+                        [
+                            {
+                                "quantity": 1,
+                                "name": "Cool Card",
+                                "rarity": 3
+                            },
+                            {
+                                "quantity": 1,
+                                "energy": "Arena",
+                                "amount": 5
+                            },
+                            {
+                                "quantity": 10
+                            }
+                        ]
+                        </code></pre>
+                    </section>
+
+                    <section data-transition="none">
+                        <pre><code class="stretch" data-trim data-noescape>
                         [
                             {
                                 "quantity": 1,
@@ -153,31 +179,6 @@
                             {
                                 "quantity": 10,
                                 "data": {}
-                            }
-                        ]
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <p>Listing Rewards</p>
-                        <pre><code data-trim data-noescape>
-                        [
-                            {
-                                "quantity": 1,
-                                "data": {
-                                    "name": "Cool Card",
-                                    "rarity": 3
-                                }
-                            },
-                            {
-                                "quantity": 1,
-                                "data": {
-                                    "energy": "Arena",
-                                    "amount": 5
-                                }
-                            },
-                            {
-                                "quantity": 10
                             }
                         ]
                         </code></pre>
